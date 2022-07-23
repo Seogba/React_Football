@@ -1,8 +1,8 @@
 import '../App.css';
 
-const TopNav = () =>{
+const League = () =>{
     return (
-        <div className="TopNav" >
+        <div className="League" >
             <h1>Soccer </h1>
         </div>
     )
@@ -10,4 +10,4 @@ const TopNav = () =>{
 
 
 
-export default TopNav;
+export default League;
