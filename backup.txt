@@ -1,0 +1,37 @@
+const League = () => {
+  const [leagues, setLeagues] = useState([]);
+  const options = {
+    method: "GET",
+    url: "https://api-football-v1.p.rapidapi.com/v3/timezone",
+    headers: {
+      "X-RapidAPI-Key": "dc8ae74dd7msh32aeb2cb02e8137p100e4djsn3f626db9ac6a",
+      "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
+    },
+  };
+
+  useEffect(() => {
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+        setLeagues(response.data);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, []);
+
+
+
+  ------------------------------
+
+
+    const options = {
+    method: "GET",
+    url: "https://v3.football.api-sports.io/leagues",
+    headers: {
+      "data-host": "v3.football.api-sports.io.",
+      "data-key": "8d80d133b058f28ad9b387ede7411202",
+      "data-theme": false,
+      "data-show-errors": true,
+    },
