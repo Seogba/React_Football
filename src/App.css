@@ -20,7 +20,7 @@ button {
   appearance: none;
 }
 
-.topNav{
+.TopNav{
   width:100%;
   height:10vh;
   background-color: black;
@@ -67,8 +67,24 @@ button {
   display:flex;
   align-items: center;
   flex-direction: column;
+  background-image: url("../ground-soccer.jpg");
+  background-size:100%;
+
   }
 
+  .league{
+    width:100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align:center;
+    justify-content: center;
+    margin-bottom:60px;
+    grid-row-gap:90px;
+  }
+
+  .league-logo{
+    width:40%;
+  }
 .BottomNav{
   width:100%;
   height:10vh;
