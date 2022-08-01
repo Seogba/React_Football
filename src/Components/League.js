@@ -7,7 +7,7 @@ const League = () => {
   const [leagues, setLeagues] = useState([]);
   const [now, setNow] = useState(24);
   const [limits, setLimits] = useState(24);
-
+  const [loading, setLoading] = useState(true);
   const loadMoreLeague = () => {};
 
   useEffect(() => {
@@ -21,6 +21,7 @@ const League = () => {
       .then((res) => {
         console.log("res,data:", res.data.response);
         setLeagues(res.data.response);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -28,13 +29,16 @@ const League = () => {
   }, []);
   return (
     <div className="league">
-      {leagues.map((data) => (
-        <div key={data.id} className="league-tab">
-          <img src={data.league.logo} alt="#" className="league-logo" />
-          <br />
-          <h3>{data.league.name}</h3>
-        </div>
-      ))}
+      {loading ? (
+        <h1>Now loading,,,</h1>
+      ) : (
+        leagues.map((data) => (
+          <div key={data.id} className="league-tab">
+            <img src={data.league.logo} alt="#" className="league-logo" />
+            <h3>{data.league.name}</h3>
+          </div>
+        ))
+      )}
     </div>
   );
 };
