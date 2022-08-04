@@ -9,7 +9,7 @@ const Ranking = () => {
   const [selectLeague, setSelectLeague] = useState("Euro Championship");
 
   /*useEffect(() => {
-    axios("https://v3.football.api-sports.io/standings?league", {
+    axios("https://v3.football.api-sports.io/${selectLeague}standings", {
       method: "GET",
       headers: {
         "x-rapidapi-host": "v3.football.api-sports.io",

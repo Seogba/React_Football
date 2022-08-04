@@ -5,10 +5,9 @@ import apikey from "../Data/config";
 
 const League = () => {
   const [leagues, setLeagues] = useState([]);
-  const [now, setNow] = useState(24);
+  const [now] = useState(24);
   const [limits, setLimits] = useState(24);
   const [loading, setLoading] = useState(true);
-  const loadMoreLeague = () => {};
 
   useEffect(() => {
     axios("https://v3.football.api-sports.io/leagues", {
@@ -27,6 +26,11 @@ const League = () => {
         console.log(err);
       });
   }, []);
+
+  const onClick = () => {
+    setLimits(limits + now);
+  };
+
   return (
     <div className="league">
       {loading ? (
@@ -39,6 +43,9 @@ const League = () => {
           </div>
         ))
       )}
+      <button onClick={onClick} id="more-button">
+        read more...
+      </button>
     </div>
   );
 };
