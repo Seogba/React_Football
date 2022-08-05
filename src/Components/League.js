@@ -43,9 +43,11 @@ const League = () => {
           </div>
         ))
       )}
-      <button onClick={onClick} id="more-button">
-        read more...
-      </button>
+      {loading ? null : (
+        <button onClick={onClick} id="more-button">
+          read more...
+        </button>
+      )}
     </div>
   );
 };

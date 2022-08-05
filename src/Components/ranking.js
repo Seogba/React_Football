@@ -64,7 +64,11 @@ const Ranking = () => {
           <option value="2021">2019</option>
         </select>
       </div>
-      {console.log(rankings.length)}
+      {rankings.map((data) => (
+        <div key={data.id} className="ranking-tab">
+          {data.length}
+        </div>
+      ))}
     </div>
   );
 };
