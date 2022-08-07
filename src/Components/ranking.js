@@ -66,7 +66,17 @@ const Ranking = () => {
       </div>
       {rankings.map((data) => (
         <div key={data.id} className="ranking-tab">
-          {data.length}
+          <h1>
+            {data.league.standings[0].map((rankData) => (
+              <div key={rankData.id} className="rank-show">
+                <ul>
+                  <li>
+                    <h1>{rankData.team.name}</h1>
+                  </li>
+                </ul>
+              </div>
+            ))}
+          </h1>
         </div>
       ))}
     </div>
