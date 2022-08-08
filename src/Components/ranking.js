@@ -5,9 +5,27 @@ import apikey from "../Data/config";
 
 const Ranking = () => {
   const [rankings, setRankings] = useState([]);
+  const [years, setYears] = useState([]);
   const [selectYear, setSelectYear] = useState("2021");
   const [selectLeague, setSelectLeague] = useState("61");
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios("https://v3.football.api-sports.io/leagues/seasons", {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "v3.football.api-sports.io",
+        "x-rapidapi-key": apikey,
+      },
+    })
+      .then((res) => {
+        console.log("res,data:", res.data.response);
+        setYears(res.data.response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   useEffect(() => {
     axios(
@@ -30,53 +48,35 @@ const Ranking = () => {
       });
   }, [selectLeague, selectYear]);
 
-  /*<div className="ranking-show">
-  {loading ? (
-    <h1>now loading,,,</h1>
-  ) : (
-    rankings.map((data) => (
-     
-    ))
-  )}
-</div>*/
-
   return (
     <div className="ranking">
-      <div className="select-tab">
-        <select
-          name="select-league"
-          id="select-league"
-          defaultValue={selectLeague}
-          onChange={(e) => setSelectLeague(e.target.value)}
-        >
-          <option value="france">Ligue 1</option>
-          <option value="Euro">Euro Championship</option>
-          <option value="Confe">Confederations Cup</option>
-        </select>
-        <select
-          name="select-year"
-          id="select-year"
-          defaultValue={selectYear}
-          onChange={(e) => setSelectYear(e.target.value)}
-        >
-          <option value="2021">2021</option>
-          <option value="2021">2020</option>
-          <option value="2021">2019</option>
-        </select>
-      </div>
       {rankings.map((data) => (
         <div key={data.id} className="ranking-tab">
-          <h1>
-            {data.league.standings[0].map((rankData) => (
-              <div key={rankData.id} className="rank-show">
-                <ul>
-                  <li>
-                    <h1>{rankData.team.name}</h1>
-                  </li>
-                </ul>
-              </div>
+          <select>
+            <option>
+              {data.league.id} : {data.league.name}
+            </option>
+          </select>
+          <select
+            className="season-select"
+            onChange={(e) => setSelectYear(e.target.value)}
+          >
+            {years.map((season) => (
+              <option>{season}</option>
             ))}
-          </h1>
+          </select>
+          {data.league.standings[0].map((rankData) => (
+            <div key={rankData.id} className="rank-show">
+              <dl>
+                <dt>
+                  <h3>
+                    <img src={rankData.team.logo} alt="#"></img>
+                    {rankData.rank}.{rankData.team.name}
+                  </h3>
+                </dt>
+              </dl>
+            </div>
+          ))}
         </div>
       ))}
     </div>
