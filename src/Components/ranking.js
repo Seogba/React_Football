@@ -5,27 +5,12 @@ import apikey from "../Data/config";
 
 const Ranking = () => {
   const [rankings, setRankings] = useState([]);
-  const [years, setYears] = useState([]);
+  const [leagueNames, setLeagueNames] = useState([]);
   const [selectYear, setSelectYear] = useState("2021");
   const [selectLeague, setSelectLeague] = useState("61");
+  const [leagueData, setLeagueData] = useState([]);
+  const [years, setYears] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    axios("https://v3.football.api-sports.io/leagues/seasons", {
-      method: "GET",
-      headers: {
-        "x-rapidapi-host": "v3.football.api-sports.io",
-        "x-rapidapi-key": apikey,
-      },
-    })
-      .then((res) => {
-        console.log("res,data:", res.data.response);
-        setYears(res.data.response);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
 
   useEffect(() => {
     axios(
@@ -47,6 +32,24 @@ const Ranking = () => {
         console.log(err);
       });
   }, [selectLeague, selectYear]);
+
+  useEffect(() => {
+    axios("https://v3.football.api-sports.io/leagues", {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "v3.football.api-sports.io",
+        "x-rapidapi-key": apikey,
+      },
+    })
+      .then((res) => {
+        console.log("res,data:", res.data.response);
+        setLeagueData(res.data.response);
+        console.log("hi:", leagueData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className="ranking">
