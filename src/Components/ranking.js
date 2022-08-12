@@ -5,11 +5,9 @@ import apikey from "../Data/config";
 
 const Ranking = () => {
   const [rankings, setRankings] = useState([]);
-  const [leagueNames, setLeagueNames] = useState([]);
   const [selectYear, setSelectYear] = useState("2021");
   const [selectLeague, setSelectLeague] = useState("61");
   const [leagueData, setLeagueData] = useState([]);
-  const [years, setYears] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -42,9 +40,9 @@ const Ranking = () => {
       },
     })
       .then((res) => {
-        console.log("res,data:", res.data.response);
+        console.log("data : ", res.data.response);
         setLeagueData(res.data.response);
-        console.log("hi:", leagueData);
+        console.log("gd: ", leagueData[0].seasons.length);
       })
       .catch((err) => {
         console.log(err);
@@ -54,26 +52,27 @@ const Ranking = () => {
   return (
     <div className="ranking">
       {rankings.map((data) => (
-        <div key={data.id} className="ranking-tab">
-          <select>
-            <option>
-              {data.league.id} : {data.league.name}
-            </option>
+        <div key={data.id} className="ranking_tab">
+          <select
+            className="league_select"
+            onChange={(option) => setSelectLeague(option.target.value)}
+          >
+            {leagueData.map((selectData) => (
+              <option value={selectData.league.id}>
+                {selectData.league.id} : {selectData.league.name}
+              </option>
+            ))}
           </select>
           <select
             className="season-select"
             onChange={(e) => setSelectYear(e.target.value)}
-          >
-            {years.map((season) => (
-              <option>{season}</option>
-            ))}
-          </select>
+          ></select>
           {data.league.standings[0].map((rankData) => (
-            <div key={rankData.id} className="rank-show">
+            <div key={rankData.id} className="rank_show">
               <dl>
                 <dt>
                   <h3>
-                    <img src={rankData.team.logo} alt="#"></img>
+                    <img src={rankData.team.logo} alt="#" />
                     {rankData.rank}.{rankData.team.name}
                   </h3>
                 </dt>

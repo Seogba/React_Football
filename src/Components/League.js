@@ -18,7 +18,7 @@ const League = () => {
       },
     })
       .then((res) => {
-        console.log("res,data:", res.data.response);
+        //console.log("res,data:", res.data.response);
         setLeagues(res.data.response);
         setLoading(false);
       })
@@ -38,6 +38,9 @@ const League = () => {
       ) : (
         leagues.map((data) => (
           <div key={data.id} className="league-tab">
+            {data.length > limits
+              ? (data.length = limits - 1)
+              : (data.length = 900)}
             <img src={data.league.logo} alt="#" className="league-logo" />
             <h3>{data.league.name}</h3>
           </div>
