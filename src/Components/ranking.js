@@ -4,10 +4,11 @@ import axios from "axios";
 import apikey from "../Data/config";
 
 const Ranking = () => {
+  const [leagueData, setLeagueData] = useState([]);
   const [rankings, setRankings] = useState([]);
+  const [years, setYears] = useState([]);
   const [selectYear, setSelectYear] = useState("2021");
   const [selectLeague, setSelectLeague] = useState("61");
-  const [leagueData, setLeagueData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -49,12 +50,30 @@ const Ranking = () => {
       });
   }, []);
 
+  useEffect(() => {
+    axios("https://v3.football.api-sports.io/leagues/seasons", {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "v3.football.api-sports.io",
+        "x-rapidapi-key": apikey,
+      },
+    })
+      .then((res) => {
+        console.log("res,data:", res.data.response);
+        setYears(res.data.response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div className="ranking">
       {rankings.map((data) => (
         <div key={data.id} className="ranking_tab">
           <select
             className="league_select"
+            defaultValue={selectLeague}
             onChange={(option) => setSelectLeague(option.target.value)}
           >
             {leagueData.map((selectData) => (
@@ -66,7 +85,11 @@ const Ranking = () => {
           <select
             className="season-select"
             onChange={(e) => setSelectYear(e.target.value)}
-          ></select>
+          >
+            {years.map((season) => (
+              <option>{season}</option>
+            ))}
+          </select>
           {data.league.standings[0].map((rankData) => (
             <div key={rankData.id} className="rank_show">
               <dl>

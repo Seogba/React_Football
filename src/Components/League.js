@@ -40,7 +40,7 @@ const League = () => {
           <div key={data.id} className="league-tab">
             {data.length > limits
               ? (data.length = limits - 1)
-              : (data.length = 900)}
+              : (data.length = leagues.length - 1)}
             <img src={data.league.logo} alt="#" className="league-logo" />
             <h3>{data.league.name}</h3>
           </div>
