@@ -43,7 +43,6 @@ const Ranking = () => {
       .then((res) => {
         console.log("data : ", res.data.response);
         setLeagueData(res.data.response);
-        console.log("gd: ", leagueData[0].seasons.length);
       })
       .catch((err) => {
         console.log(err);
@@ -87,7 +86,7 @@ const Ranking = () => {
             onChange={(e) => setSelectYear(e.target.value)}
           >
             {years.map((season) => (
-              <option>{season}</option>
+              <span>{season}</span>
             ))}
           </select>
           {data.league.standings[0].map((rankData) => (

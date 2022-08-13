@@ -18,7 +18,7 @@ const League = () => {
       },
     })
       .then((res) => {
-        //console.log("res,data:", res.data.response);
+        console.log("res,data:", res.data.response);
         setLeagues(res.data.response);
         setLoading(false);
       })
