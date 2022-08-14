@@ -5,9 +5,9 @@ import apikey from "../Data/config";
 
 const League = () => {
   const [leagues, setLeagues] = useState([]);
-  const [now] = useState(24);
   const [limits, setLimits] = useState(24);
   const [loading, setLoading] = useState(true);
+  const INCREASE_NUMBER = 24;
 
   useEffect(() => {
     axios("https://v3.football.api-sports.io/leagues", {
@@ -27,31 +27,49 @@ const League = () => {
       });
   }, []);
 
+  //limits가 변경될 때 변경된 길이만큼 leagues의 길이를 재할당
+  // seEffect(()=>{
+  //   const length = Math.min(leagues.length , limits);
+  //   const newArray = [];
+
+  //   for(let i = 0; i < length; i++)
+  //   {
+  //     newArray.push(leagues[i])
+  //   }
+
+  //   setLeagues(newArray);
+  // }, [limits]);
+
   const onClick = () => {
-    setLimits(limits + now);
+    setLimits(limits + INCREASE_NUMBER);
   };
 
   return (
-    <div className="league">
-      {loading ? (
-        <h1>Now loading,,,</h1>
-      ) : (
-        leagues.map((data) => (
-          <div key={data.id} className="league-tab">
-            {data.length > limits
-              ? (data.length = limits - 1)
-              : (data.length = leagues.length - 1)}
-            <img src={data.league.logo} alt="#" className="league-logo" />
-            <h3>{data.league.name}</h3>
-          </div>
-        ))
-      )}
-      {loading ? null : (
-        <button onClick={onClick} id="more-button">
-          read more...
-        </button>
-      )}
-    </div>
+    <>
+      <div className="league">
+        {loading ? (
+          <h1>Now loading,,,</h1>
+        ) : (
+          leagues.map(
+            (item, index) =>
+              index < limits && (
+                // 비효율적으로 반복문이 돌고있음
+                <div key={item.league.id} className="league-tab">
+                  <img src={item.league.logo} alt="#" className="league-logo" />
+                  <h3>{item.league.name}</h3>
+                </div>
+              )
+          )
+        )}
+      </div>
+      <div>
+        {loading ? null : (
+          <button onClick={onClick} id="more-button">
+            read more...
+          </button>
+        )}
+      </div>
+    </>
   );
 };
 
