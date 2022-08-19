@@ -52,17 +52,27 @@ const Ranking = () => {
       });
   }, []);
 
+  //leagueData가 null이 아닐 때, 선택한 특정 리그의 id와 일치하는 leagueData를 받아와
+  //year 데이터를 targetLeagueData에 넣는다.
   useEffect(() => {
     if (leagueData != null) {
-      const targetLeagueData = leagueData.find((item) => {
-        console.log(item.league.id);
-        console.log(selectedLeagueId);
-        return item.league.id === selectedLeagueId;
-      });
+      const targetLeagueData = leagueData.find(
+        (item) => item.league.id == selectedLeagueId
+      );
+
+      setYears(targetLeagueData.seasons.map((season) => season.year));
+
       // const yearArray = targetLeagueData.seasons.map((season) => season.year);
       // setYears(yearArray);
     }
   }, [selectedLeagueId, leagueData]);
+
+  // useEffect(() => {
+  //   setSelectedYear(2016);
+  //   if (years.find((year) => year == 2016) == undefined) {
+  //     setSelectedYear(2018);
+  //   }
+  // }, [selectedYear]);
 
   // useEffect(() => {
   //   axios("https://v3.football.api-sports.io/leagues/seasons", {
