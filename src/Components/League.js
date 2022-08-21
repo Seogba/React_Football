@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "../App.css";
 import axios from "axios";
 import apikey from "../Data/config";
+import TopNav from "./TopNav";
 
 const League = () => {
   const [leagues, setLeagues] = useState([]);
@@ -62,11 +63,16 @@ const League = () => {
           )
         )}
       </div>
-      <div>
+      <div className="additional-elements">
         {loading ? null : (
           <button onClick={onClick} id="more-button">
             read more...
           </button>
+        )}
+        {loading ? null : (
+          <a href="#top">
+            <img className="nav-Img" src="img/up.png" alt="#" />
+          </a>
         )}
       </div>
     </>
