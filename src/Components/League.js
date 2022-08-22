@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import "../App.css";
 import axios from "axios";
 import apikey from "../Data/config";
@@ -8,6 +9,7 @@ const League = () => {
   const [leagues, setLeagues] = useState([]);
   const [limits, setLimits] = useState(24);
   const [loading, setLoading] = useState(true);
+  const [passLeagueId, setPassLeagueId] = useState(null);
   const INCREASE_NUMBER = 24;
 
   useEffect(() => {
@@ -46,7 +48,7 @@ const League = () => {
   };
 
   return (
-    <>
+    <Router>
       <div className="league">
         {loading ? (
           <h1>Now loading,,,</h1>
@@ -56,7 +58,13 @@ const League = () => {
               index < limits && (
                 // 비효율적으로 반복문이 돌고있음
                 <div key={item.league.id} className="league-tab">
-                  <img src={item.league.logo} alt="#" className="league-logo" />
+                  <Link to="/ShowRank">
+                    <img
+                      src={item.league.logo}
+                      alt="#"
+                      className="league-logo"
+                    />
+                  </Link>
                   <h3>{item.league.name}</h3>
                 </div>
               )
@@ -75,7 +83,7 @@ const League = () => {
           </a>
         )}
       </div>
-    </>
+    </Router>
   );
 };
 

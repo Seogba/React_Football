@@ -109,6 +109,7 @@ const Ranking = () => {
           </select>
           <select
             className="season-select"
+            defaultValue={selectedYear}
             onChange={(e) => setSelectedYear(e.target.value)}
           >
             {years.map((season) => (
