@@ -24,14 +24,27 @@ html{
   scroll-behavior: smooth;
 }
 
-.top-nav{
+#top-nav{
   width:100%;
   height:10vh;
   background-color: black;
   color:white;
   display:flex;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
+  text-decoration: none;
+  padding: 8px 35px;
+}
+
+.topNav-Content{
+  display:flex;
+  list-style: none;
+  gap:15px;
+  
+}
+
+.topNav-Content>li:hover{
+  background-color: gray;
 }
 
 .menu{
@@ -76,6 +89,77 @@ html{
   background-attachment: fixed;
   }
 
+
+  .main-home{
+    width:100%;
+    min-height:80vh;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("../ground-soccer.jpg");
+    background-size:100% ;
+    
+    gap:700px;
+  }
+
+  .forward{
+    padding-top: 100px;
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+  }
+  .forward>img{
+    width:200px;
+  height:200px;
+  }
+
+  .forward>img:hover{
+    transform: scale(1.3);
+  }
+
+  .midfielder{
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+  }
+
+  .midfielder>img{
+    width:200px;
+  height:200px;
+  }
+
+  .midfielder>img:hover{
+    transform: scale(1.3);
+  }
+
+  .defender{
+      width:100%;
+      display:flex;
+      justify-content:space-around;   
+  }
+
+  .defender>img{
+    width:200px;
+  height:200px;
+  }
+
+  .defender>img:hover{
+    transform: scale(1.3);
+  }
+
+  .goalkeeper{
+    width:100%;
+    display:flex;
+    justify-content:space-around;  
+  }
+ .goalkeeper>img{
+  width:200px;
+  height:100px;
+ }
+
+ .goalkeeper>img:hover{
+  transform: scale(1.3);
+ }
   .league{
     width:100%;
     display:grid;
