@@ -1,15 +1,22 @@
-import "../App.css";
+import "../css/TopNav.css";
+import { Link } from "react-router-dom";
 
 const TopNav = () => {
   return (
     <nav id="top-nav">
       <div className="main-logo">
-        <h1>Soccer</h1>
+        <h1>
+          <Link to="/">Soccer</Link>
+        </h1>
       </div>
 
       <ul className="topNav-Content">
-        <li>리그</li>
-        <li>랭킹</li>
+        <li>
+          <Link to="/leagues">리그</Link>
+        </li>
+        <li>
+          <Link to="/rankings">랭킹</Link>
+        </li>
         <li>팀정보</li>
       </ul>
     </nav>

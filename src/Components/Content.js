@@ -1,4 +1,4 @@
-import "../App.css";
+import "../css/App.css";
 import { useState, useEffect } from "react";
 import League from "./League";
 import Ranking from "./Ranking";

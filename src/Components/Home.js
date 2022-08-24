@@ -1,10 +1,12 @@
-import "../App.css";
+import { Router, Link } from "react-router-dom";
+import "../css/Home.css";
 
 const Home = () => {
   return (
     <div className="main-home">
       <div className="forward">
         <img src="img/leftwing.png" alt="#" />
+
         <img src="img/top.png" alt="#" />
         <img src="img/rightwing.png" alt="#" />
       </div>
@@ -22,7 +24,9 @@ const Home = () => {
         <img src="img/rightback.png" alt="#" />
       </div>
       <div className="goalkeeper">
-        <img src="img/goalkeeper.png" alt="#" />
+        <a href="http://localhost:3000/leagues">
+          <img src="img/goalkeeper.png" alt="#" />
+        </a>
       </div>
     </div>
   );

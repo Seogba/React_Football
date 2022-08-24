@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../App.css";
+import "../css/Ranking.css";
 import axios from "axios";
 import apikey from "../Data/config";
 

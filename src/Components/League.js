@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
-import "../App.css";
+import { Link } from "react-router-dom";
+import "../css/League.css";
 import axios from "axios";
 import apikey from "../Data/config";
 import TopNav from "./TopNav";
@@ -48,7 +48,7 @@ const League = () => {
   };
 
   return (
-    <Router>
+    <>
       <div className="league">
         {loading ? (
           <h1>Now loading,,,</h1>
@@ -58,13 +58,8 @@ const League = () => {
               index < limits && (
                 // 비효율적으로 반복문이 돌고있음
                 <div key={item.league.id} className="league-tab">
-                  <Link to="/ShowRank">
-                    <img
-                      src={item.league.logo}
-                      alt="#"
-                      className="league-logo"
-                    />
-                  </Link>
+                  <img src={item.league.logo} alt="#" className="league-logo" />
+
                   <h3>{item.league.name}</h3>
                 </div>
               )
@@ -83,7 +78,7 @@ const League = () => {
           </a>
         )}
       </div>
-    </Router>
+    </>
   );
 };
 

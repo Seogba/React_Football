@@ -35,3 +35,28 @@ const League = () => {
       "data-theme": false,
       "data-show-errors": true,
     },
+
+
+
+    -----------------------------------------
+
+
+
+    function App() {
+  return (
+    <Router>
+      <Switch>
+        <>
+          <div className="App">
+            <TopNav />
+            <Route path="/rankings" component={Ranking} />
+            <Route path="/leagues" component={League} />
+            <Route path="/" component={Home} />
+            {/* <Content /> */}
+            <BottomNav />
+          </div>
+        </>
+      </Switch>
+    </Router>
+  );
+}

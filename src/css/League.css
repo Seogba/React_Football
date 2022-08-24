@@ -1,0 +1,48 @@
+.league{
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    text-align:center;
+    justify-content: center;
+    margin-bottom:60px;
+    grid-row-gap:90px;
+  }
+
+  .league-logo{
+    width:40%;
+  }
+
+  /* 리그 사진에 올려놨을 때 */
+  .league-logo:hover{
+    transform: scale(1.15);
+    
+  }
+
+
+  .additional-elemants{
+    display:flex;
+  }
+
+  #more-button{
+    background-color: black;
+    border:none;
+    border-radius: 12px;
+    padding:20px 20px;
+    color:white;
+    text-align:center;
+    text-decoration:none;
+    font-size:20px;
+  }
+
+  #more-button:hover{background-color: gray;}
+
+  #more-button:active{
+    transform: translateY(5px);
+  }
+
+  .nav-Img{
+    width:35px;
+    height:35px;
+    position:absolute;
+    right:50px;
+  }
