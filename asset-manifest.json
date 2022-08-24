@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/React_Football/static/css/main.5a51e524.css",
+    "main.js": "/React_Football/static/js/main.309b27c9.js",
+    "static/js/787.898327f6.chunk.js": "/React_Football/static/js/787.898327f6.chunk.js",
+    "static/media/ground-soccer.jpg": "/React_Football/static/media/ground-soccer.8f1218ee4c4f3c99b899.jpg",
+    "index.html": "/React_Football/index.html",
+    "main.5a51e524.css.map": "/React_Football/static/css/main.5a51e524.css.map",
+    "main.309b27c9.js.map": "/React_Football/static/js/main.309b27c9.js.map",
+    "787.898327f6.chunk.js.map": "/React_Football/static/js/787.898327f6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5a51e524.css",
+    "static/js/main.309b27c9.js"
+  ]
+}
